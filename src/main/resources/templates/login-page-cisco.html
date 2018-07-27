@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />\
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+    <script type="text/javascript" src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="../../css/social-login.css" />
+
+
+
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+    </div>
+    <div class="row">
+        <div class="hidden-xs hidden-sm col-md-2 col-md-offset-1  col-lg-2 col-lg-offset-1">
+            <img src="../../brand.gif" alt="logo" height="80%" width="80%">
+        </div>
+        <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-1 col-lg-4 col-lg-offset-1">
+            <div class="login-form">
+                <form th:action="${switch_url}" method="post">
+                    <h2 class="text-center">Sign in</h2>
+                    <div class="text-center social-btn">
+                        <a href="#" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
+                        <a href="#" class="btn btn-info btn-block"><i class="fa fa-twitter"></i> Sign in with <b>Twitter</b></a>
+                        <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>
+                    </div>
+                    <div class="or-seperator"><i>or with email</i></div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" name="email" placeholder="email">
+                            <input type="hidden" class="form-control" name="redirect_url" th:value="${redirect_url}"  placeholder="Username" required="required">
+                            <input type="hidden" id="buttonClicked" name="buttonClicked" value="4" required="required">
+                            <input type="hidden" class="form-control" name="username" th:value="${username}"  placeholder="Username" required="required">
+                            <input type="hidden" id="password" name="password" th:value="${password}" required="required">
+                        </div>
+                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon"><i class="fa fa-lock"></i></span>-->
+                            <!--<input type="password" class="form-control" name="password" placeholder="Password" required="required">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="form-group">
+                        <a href="/error" class="center text-success"><center>Terms and Agreements</center></a>
+                    </div>
+                    <div class="form-group">
+                        <label class="pull-left checkbox-inline"><input type="checkbox"> I accept the terms and agreement and give my consent.</label>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <br>
+                        <button onclick="submitForm()" class="btn btn-success btn-block login-btn">Get Access</button>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <a href="/"  id ="skipLogin" class="center text-success"><center>Skip</center></a>
+                    </div>
+                </form>
+                <div class="hint-text small">Don't have an account? <a href="#" class="text-success">Register Now!</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+//  $( document ).ready(function() {
+//    console.log(decodeURIComponent(document.getElementById("allQueryParametersMeraki").value));
+//    console.log(window.location.href + "?" + decodeURIComponent(document.getElementById("allQueryParametersMeraki").value));
+//  })
+
+
+ $("#skipLogin").click(function(e){
+   e.preventDefault();
+   $(".login-form").submit();
+ })
+
+ function submitForm(){
+    //social login, on succes submit form
+   console.log("komt tie hier")
+   $(".login-form").submit();
+
+ }
+</script>
+
+
+</body>
